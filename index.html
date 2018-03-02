@@ -35,7 +35,7 @@
           <div class="android-navigation-container">
             <nav class="android-navigation mdl-navigation">
               <a class="mdl-navigation__link mdl-typography--text-uppercase" href="">Top Headlines</a>
-              <a class="mdl-navigation__link mdl-typography--text-uppercase" href="">Technology</a>
+              <a class="mdl-navigation__link mdl-typography--text-uppercase" target="_blank" onclick="technology()">Technology</a>
               <a class="mdl-navigation__link mdl-typography--text-uppercase" href="">Politics</a>
               <a class="mdl-navigation__link mdl-typography--text-uppercase" href="">Business</a>
               <a class="mdl-navigation__link mdl-typography--text-uppercase" href="">Crime</a>
@@ -72,11 +72,31 @@
           <div class="android-section-title mdl-typography--display-1-color-contrast">Top Headlines</div>
 <!-- News Container -->   
             
-             <div class="android-card-container mdl-grid">
-                 <div id="news-container"class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp"></div>
+             <div id="news-container" class="android-card-container mdl-grid"></div>
+         </div>
+        <script id="newsTemplate" type="text/x-handlebars-template">
+        {{#each articles}}
+          {{#if description}}
+           <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
+              <div class="mdl-card__media">
+                <img src="{{urlToImage}}">
+              </div>
+              <div class="mdl-card__title">
+                 <h4 class="mdl-card__title-text">{{title}}</h4>
+              </div>
+              <div class="mdl-card__supporting-text">
+                <span class="mdl-typography--font-light mdl-typography--subhead">{{description}}</span>
+              </div>
+              <div class="mdl-card__actions" style="text-align:center;">
+                 <a class="android-link mdl-button mdl-js-button mdl-typography--font-light" href="{{url}}" target="_blank">
+                   {{source.name}}
+                 </a>
+              </div>
              </div>
-        </div>
-
+         {{/if}}
+      {{/each}}
+     </script>
+<!-- News Container End -->
         <footer class="android-footer mdl-mega-footer">
           <div class="mdl-mega-footer--top-section">
            <div class="mdl-mega-footer--left-section">
@@ -97,7 +117,9 @@
         </footer>
       </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/8.6.0/lazyload.min.js"></script>
+    <script src="js/handlebars-v4.0.8.js"></script>
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="js/script2.js"></script>
   </body>
 </html>
